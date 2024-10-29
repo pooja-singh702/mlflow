@@ -12,4 +12,5 @@ joblib
 types-pyYAML
 flask
 Flask-Cors
+ensure
 -e .
