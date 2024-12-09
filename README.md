@@ -240,6 +240,10 @@ keeping all things same just class data transformation will intilaise these var 
 summary:
 entity(configentity) : add datatransformationconfig: contains return as data types of var root dir, data 
 
+
+
+#######################################################
+De
 ##############################################################
 
 ## STEPS FOR MODEL TRAING USING MLFLOW
@@ -288,12 +292,59 @@ pip install -r requirements.txt
 pip install -r requirements.txt
 ```
 
+######################FINAL VERSION#########################################
+
+# MLOps Project Structure
+
+Welcome to the **MLOps Project** repository! This project follows best practices for Machine Learning Operations (MLOps), ensuring reproducibility, automation, and scalability of machine learning models.
+
+Below is an overview of the **project structure** that defines how we organize code, data, models, and configurations for seamless collaboration and deployment.
+
+## Project Structure Overview
+
+```plaintext
+.
+├── .github/
+│   └── workflows/
+│       └── mlops-pipeline.yml  # GitHub Actions workflow file to automate the pipeline
+├── artifacts/
+│   ├── Data_Ingestion/         # Raw data from the ingestion stage
+│   │   ├── data.zip/           # Raw data (zipped)
+│   │   ├── winequality-red.csv # Raw dataset
+│   ├── Data_Validation/        # Folder containing data validation outputs
+│   │   ├── status.txt/         # Validation status or logs
+│   │   ├── components/         # Components for the validation logic (if any)
+│   └── Model_Evaluation/       # Model evaluation results
+│       ├── metrics.json/       # JSON file storing model evaluation metrics (accuracy, AUC, etc.)
+├── src/
+│   └── mlProject/              # Main source code for the project
+│       ├── __init__.py/        # Initialization file for mlProject
+│       ├── data_ingestion.py/  # Data ingestion logic for collecting raw data
+│       ├── data_transformation.py/ # Transformation of raw data to prepare for modeling
+│       ├── data_validation.py/  # Validation of data to check quality and integrity
+│       ├── model_evaluation.py/ # Logic for evaluating the model performance
+│       ├── model_trainer.py/   # Script for training the machine learning model
+│       └── utils/              # Utility functions like logging, config loading, etc.
+│           └── common.py       # Common utility functions
+├── config/
+│   ├── configuration.py/      # Configuration for paths, model parameters, etc.
+├── entity/
+│   ├── config_entity.py/      # Configuration entity with paths or parameters for models and data
+├── constants/
+│   ├── __init__.py/           # Constants used throughout the project (e.g., file paths)
+├── pipeline/
+│   ├── prediction.py/         # Script for generating predictions using the trained model
+│   ├── stage_01_data_ingestion.py/ # Data ingestion script for raw data collection
+│   ├── stage_02_data_validation.py/ # Data validation script to check data integrity
+│   ├── stage_03_data_transformation.py/ # Transformation of raw data into a usable format
+│   ├── stage_04_model_training.py/    # Model training script
+│   ├── stage_05_model_evaluation.py/  # Model evaluation script to evaluate model performance
+└── .github/
+    ├── workflows/
+        ├── main.yaml/         # Defines the overall pipeline stages and automation in GitHub Actions
 
 
-
-
-
-
+```
 
 
 
