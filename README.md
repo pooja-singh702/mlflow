@@ -240,6 +240,15 @@ keeping all things same just class data transformation will intilaise these var 
 summary:
 entity(configentity) : add datatransformationconfig: contains return as data types of var root dir, data 
 
+##################################################
+MLFLOW: For prediction and reports, used mlflow at prediction.py or prediction pipeline  used dagshub for moving reports metrics from local server to cloud and attached git hub to dagshub for data versioning and many.
+
+app.py: USE: When u try to change and experiment with prediction results using 
+diff paramater eg changing alpha or l1 ratio at params.yaml u get diff results and versions at mlflow report. Now to make it easier for user, we make an app.py using flask and then used index.html results.html for user to input and get results using get /post. 
+
+Containerised using Docker: 
+
+Deployed this docker to EC2
 
 
 #######################################################
