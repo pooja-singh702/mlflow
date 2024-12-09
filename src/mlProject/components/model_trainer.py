@@ -1,48 +1,29 @@
-import os
-import urllib.request as request
-import zipfile
-from mlProject import logger
-from src.mlProject.utils.common import get_size
-from pathlib import Path
-from mlProject.entity.config_entity import (DataTransformationConfig)
-
-
-from sklearn.model_selection import train_test_split
 import pandas as pd
+import os
+from mlProject import logger
 from sklearn.linear_model import ElasticNet
 import joblib
-import pandas as pd
+from mlProject.entity.config_entity import ModelTrainerConfig
 
 
 
-
-
-
-
-
-class DataTransformation:
-    def __init__(self, config: DataTransformationConfig):
+class ModelTrainer:
+    def __init__(self, config: ModelTrainerConfig):
         self.config = config
 
     
-    ## Note: You can add different data transformation techniques such as Scaler, PCA and all
-    #You can perform all kinds of EDA in ML cycle here before passing this data to the model
+    def train(self):
+        train_data = pd.read_csv(self.config.train_data_path)
+        test_data = pd.read_csv(self.config.test_data_path)
 
-    # I am only adding train_test_spliting cz this data is already cleaned up
+
+        train_x = train_data.drop([self.config.target_column], axis=1)
+        test_x = test_data.drop([self.config.target_column], axis=1)
+        train_y = train_data[[self.config.target_column]]
+        test_y = test_data[[self.config.target_column]]
 
 
-    def train_test_spliting(self):
-        data = pd.read_csv(self.config.data_path)
+        lr = ElasticNet(alpha=self.config.alpha, l1_ratio=self.config.l1_ratio, random_state=42)
+        lr.fit(train_x, train_y)
 
-        # Split the data into training and test sets. (0.75, 0.25) split.
-        train, test = train_test_split(data)
-
-        train.to_csv(os.path.join(self.config.root_dir, "train.csv"),index = False)
-        test.to_csv(os.path.join(self.config.root_dir, "test.csv"),index = False)
-
-        logger.info("Splited data into training and test sets")
-        logger.info(train.shape)
-        logger.info(test.shape)
-
-        print(train.shape)
-        print(test.shape)
+        joblib.dump(lr, os.path.join(self.config.root_dir, self.config.model_name))

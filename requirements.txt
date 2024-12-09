@@ -13,4 +13,5 @@ types-pyYAML
 flask
 Flask-Cors
 ensure
+python-dotenv
 # -e .

@@ -1,0 +1,15 @@
+artifact_uri: file:///D:/MLOP_Project_new/mlruns/0/c14e83b05d9e4530a45e14369ea7c939/artifacts
+end_time: 1733694769799
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: c14e83b05d9e4530a45e14369ea7c939
+run_name: vaunted-stork-919
+run_uuid: c14e83b05d9e4530a45e14369ea7c939
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1733694739960
+status: 4
+tags: []
+user_id: Lenovo
